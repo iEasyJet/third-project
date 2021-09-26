@@ -1,0 +1,13 @@
+.profile__add-btn {
+  object-fit: none;
+  width: 22px;
+  height: 22px;
+  align-self: center;
+}
+
+@media (max-width: 680px) {
+  .profile__add-btn {
+    width: 16px;
+    height: 16px;
+  }
+}

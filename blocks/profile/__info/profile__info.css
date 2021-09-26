@@ -1,0 +1,12 @@
+.profile__info {
+  position: relative;
+  align-self: center;
+
+  width: 100%;
+}
+
+@media (max-width: 680px) {
+  .profile__info {
+    width: 282px;
+  }
+}

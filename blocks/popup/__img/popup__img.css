@@ -1,0 +1,24 @@
+.popup__img {
+  position: absolute;
+  display: block;
+  width: 32px;
+  height: 32px;
+  top: -40px;
+  right: -40px;
+
+  transition: all 0.2s linear;
+}
+
+.popup__img:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+@media (max-width: 550px) {
+  .popup__img {
+    width: 20px;
+    height: 20px;
+    top: -35px;
+    right: 0;
+  }
+}

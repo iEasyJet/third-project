@@ -1,0 +1,7 @@
+.element__name {
+  display: flex;
+  justify-content: space-between;
+
+  width: 237px;
+  margin: 24px auto 0;
+}
