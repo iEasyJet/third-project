@@ -7,7 +7,7 @@
   width: 24px;
   height: 24px;
   border: 1px solid #FFFFFF;
-  object-fit: none;
+  background: url(../../../images/profile/pencil.png) center no-repeat;
   box-sizing: border-box;
 
   transition: all 0.2s linear;

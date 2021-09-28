@@ -10,6 +10,7 @@
   border: 2px solid #FFFFFF;
   box-sizing: border-box;
   border-radius: 2px;
+  background: url(../../../images/profile/plus.png) center/ 22px 22px no-repeat;
 
   transition: all 0.2s linear;
 }
@@ -22,5 +23,6 @@
 @media (max-width: 680px) {
   .profile__btn {
     width: 282px;
+    background-size: 16px 16px;
   }
 }

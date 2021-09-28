@@ -1,11 +1,15 @@
 .popup__form {
   width: 358px;
-  height: 190px;
-  margin: 0 auto;
+  min-height: 190px;
+  margin: 0 auto 46px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 @media (max-width: 550px) {
   .popup__form {
     width: 238px;
+    margin-bottom: 42px;
   }
 }

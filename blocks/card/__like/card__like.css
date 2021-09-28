@@ -1,0 +1,21 @@
+.card__like {
+  display: block;
+  padding: 0;
+  margin: 5px 0 0;
+  width: 22px;
+  height: 19px;
+  border: 0;
+  background: url(../../../images/card/like.png) center no-repeat;
+
+  transition: all 0.2s linear;
+}
+
+.card__like:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.card__like:active {
+  background: url(../../../images/card/likeBlack.png) center no-repeat;
+  opacity: 1;
+}
