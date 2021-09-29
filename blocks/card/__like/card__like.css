@@ -5,7 +5,7 @@
   width: 22px;
   height: 19px;
   border: 0;
-  background: url(../../../images/card/like.png) center no-repeat;
+  background: url(../../../images/card/like.svg) center no-repeat;
 
   transition: all 0.2s linear;
 }
@@ -16,6 +16,6 @@
 }
 
 .card__like:active {
-  background: url(../../../images/card/likeBlack.png) center no-repeat;
+  background: url(../../../images/card/blackLike.svg) center no-repeat;
   opacity: 1;
 }

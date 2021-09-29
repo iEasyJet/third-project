@@ -8,6 +8,6 @@
   .profile {
     flex-direction: column;
     justify-content: center;
-    row-gap: 34px;
+    row-gap: 4px;
   }
 }

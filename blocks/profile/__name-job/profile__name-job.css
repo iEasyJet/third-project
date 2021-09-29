@@ -8,11 +8,16 @@
   font-size: 18px;
   line-height: 22px;
   color: #FFFFFF;
+
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
 }
 
 @media (max-width: 680px) {
   .profile__name-job {
-    text-align: center;
+    text-align: end;
+    box-sizing: border-box;
+    padding-right: 11px;
     font-size: 14px;
     line-height: 14px;
   }
