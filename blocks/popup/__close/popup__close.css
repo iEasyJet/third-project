@@ -6,7 +6,7 @@
   top: -40px;
   right: -40px;
   border: 0;
-  background: url(../../../images/popup/close.png) center/ cover no-repeat;
+  background: url(../../../images/popup/close.svg) center/ cover no-repeat;
 
   transition: all 0.2s linear;
 }

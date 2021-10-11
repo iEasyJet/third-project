@@ -1,0 +1,7 @@
+.popup-pic__box {
+  max-width: 75vw;
+  max-height: 75vh;
+
+  position: fixed;
+  top: calc(50% - 37.5vh);
+}
