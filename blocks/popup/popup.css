@@ -8,6 +8,10 @@
   bottom: 0;
   background: rgba(0, 0, 0, 0.5);
   transition: all 0.1s linear;
+
+  display: flex;
+  justify-content: center;
+  align-content: center;
 }
 
 @media (max-width: 550px) {
