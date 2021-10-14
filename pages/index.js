@@ -112,36 +112,33 @@ function addCard(placeOfAdd, template) {
 
 
 // Функция создания содержимого карточки
-function createCard(titleCard, linkImg) {
-
-  // Копируем содержимое заготовки
-  const cardItem = template.querySelector('.card__item').cloneNode(true);
+function createCard(titleCard, linkImg, template) {
 
   // Простовялем соответсвующие название, картинку и alt
-  cardItem.querySelector('.card__title').textContent = titleCard;
-  cardItem.querySelector('.card__img').src = linkImg;
-  cardItem.querySelector('.card__img').alt = titleCard;
+  template.querySelector('.card__title').textContent = titleCard;
+  template.querySelector('.card__img').src = linkImg;
+  template.querySelector('.card__img').alt = titleCard;
 
   // Функция развертывания картинки popup-pic
   function openPopupPic() {
     popupPic.classList.add('popup_opened');
-    popupPicTitle.textContent = cardItem.querySelector('.card__title').textContent;
-    popupPicExpand.src = cardItem.querySelector('.card__img').src;
+    popupPicTitle.textContent = template.querySelector('.card__title').textContent;
+    popupPicExpand.src = template.querySelector('.card__img').src;
   };
 
   // Открытие картинки
-  cardItem.querySelector('.card__img').addEventListener('click', openPopupPic);
+  template.querySelector('.card__img').addEventListener('click', openPopupPic);
 
   // Функция удаления карточки
   function deleteCard() {
-    cardItem.remove();
+    template.remove();
   };
 
   // Удаление карточки
-  cardItem.querySelector('.card__delete').addEventListener('click', deleteCard);
+  template.querySelector('.card__delete').addEventListener('click', deleteCard);
 
   // Находим лайк на карточке
-  const cardLike = cardItem.querySelector('.card__like');
+  const cardLike = template.querySelector('.card__like');
 
   // Функция проставления/удаления лайка
   function addLike() {
@@ -151,7 +148,6 @@ function createCard(titleCard, linkImg) {
   // Проставление/удаление лайка
   cardLike.addEventListener('click', addLike);
 
-  addCard(card, cardItem);
 };
 
 
@@ -159,8 +155,14 @@ function createCard(titleCard, linkImg) {
 // Добавляем массив карточек на страницу
 initialCards.forEach(function(item) {
 
+  // Копируем содержимое заготовки
+  const cardItem = template.querySelector('.card__item').cloneNode(true);
+
   // Создаем содержимое карточки
-  createCard(item.name, item.link);
+  createCard(item.name, item.link, cardItem);
+
+  // Добавляем карточки на страницу
+  addCard(card, cardItem);
 });
 
 
@@ -191,8 +193,14 @@ function createNewCard (evt) {
   // Не даем перезагружаться странице
   evt.preventDefault();
 
+  // Копируем содержимое заготовки
+  const cardItem = template.querySelector('.card__item').cloneNode(true);
+
   // Создание содержимого карточки
-  createCard(nameImgInput.value, linkImgInput.value);
+  createCard(nameImgInput.value, linkImgInput.value, cardItem);
+
+  // Добавляем карточки на страницу
+  addCard(card, cardItem);
 
   // Закрываем форму после создания карточки
   closePopup(popupImg);
