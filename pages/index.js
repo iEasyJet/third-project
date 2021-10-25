@@ -114,7 +114,7 @@ function addCard(placeOfAdd, template) {
 // Функция создания содержимого карточки
 function createCard(titleCard, linkImg, template) {
 
-  // Простовялем соответсвующие название, картинку и alt
+  // Проставялем соответсвующее название, картинку и alt
   template.querySelector('.card__title').textContent = titleCard;
   template.querySelector('.card__img').src = linkImg;
   template.querySelector('.card__img').alt = titleCard;
@@ -208,6 +208,28 @@ function createNewCard (evt) {
 
 
 
+// Функция закрытия попапа по оверлею
+function closeOnOverlay(e) {
+  if(e.target === e.currentTarget) {
+    closePopup(popupPic);
+    closePopup(popupEditProfile);
+    closePopup(popupImg);
+  }
+};
+
+
+
+// Функция закрытия попапов по клавише ECS
+function closePopupOnEsc(e) {
+  console.log(e.key)
+  if(e.key === 'Escape') {
+    closePopup(popupPic);
+    closePopup(popupEditProfile);
+    closePopup(popupImg);
+  }
+}
+
+
 // Открытие popup-img
 profileBtn.addEventListener('click', () => openPopup(popupImg));
 
@@ -228,3 +250,11 @@ formElementImg.addEventListener('submit', createNewCard);
 
 // Закрытие большой картинки
 popupPicClose.addEventListener('click', () => closePopup(popupPic));
+
+// Закрытие попапов по оверлею
+popupEditProfile.addEventListener('click', closeOnOverlay);
+popupImg.addEventListener('click', closeOnOverlay);
+popupPic.addEventListener('click', closeOnOverlay);
+
+// Закрытие попапов по клавише ECS
+document.addEventListener('keydown', closePopupOnEsc)

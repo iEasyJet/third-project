@@ -1,0 +1,6 @@
+.popup__btn_disabled {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  background: none;
+  color: rgba(0, 0, 0, 0.2);
+}
