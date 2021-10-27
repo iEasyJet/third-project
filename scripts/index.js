@@ -1,32 +1,3 @@
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  },
-];
-
-
-
 // Находим template
 const template = document.querySelector('#card').content;
 // Находим название карточки
@@ -37,7 +8,7 @@ const imgCard = template.querySelector('.card__img');
 
 
 // Находим место добавления карточек в HTML
-const card = document.querySelector('.card');
+const cardsContainer = document.querySelector('.card');
 
 
 
@@ -53,7 +24,7 @@ const profileJob = profile.querySelector('.profile__name-job');
 
 
 // Находим popup
-const popupEditProfile = document.querySelector('.popup-user-profile');
+const popupEditProfile = document.querySelector('.popup_type_profile');
 // Находим кнопку закрытия popup
 const popupSkipBtn = popupEditProfile.querySelector('.popup__close');
 // Находим форму popup
@@ -65,9 +36,9 @@ const jobInput = formElementPopup.querySelector('.popup__input_type_job');
 
 
 // Находим кнопку добавления картинок для popup-img
-const profileBtn = profile.querySelector('.profile__btn');
+const newCardBtn = profile.querySelector('.profile__btn');
 // Находим popup-img
-const popupImg = document.querySelector('.popup-img');
+const popupImg = document.querySelector('.popup_type_card');
 // Находим кнопку закрытия popup-img
 const popupSkipBtnImg = popupImg.querySelector('.popup__close');
 // Находим форму в DOM popup-img
@@ -79,7 +50,7 @@ const linkImgInput = formElementImg.querySelector('.popup__input_type_link-img')
 
 
 // Находим popup-pic
-const popupPic = document.querySelector('.popup-pic');
+const popupPic = document.querySelector('.popup_type_pic');
 // Находим закрытие popup-pic
 const popupPicClose = popupPic.querySelector('.popup__close');
 // Находим popup-pic__title
@@ -92,13 +63,22 @@ const popupPicExpand = popupPic.querySelector('.popup__pic-expand');
 // Добавляем новый класс для отображения/закрытия popup
 function openPopup(popup) {
   popup.classList.add('popup_opened');
-};
-
+  document.addEventListener('keydown', function(e) {
+    if(e.key === 'Escape') {
+      closePopup(popup);
+    }
+  })
+}
 
 
 // Удаляем новый класс  для скрытия popup
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', function(e) {
+    if(e.key === 'Escape') {
+      closePopup(popup);
+    }
+  })
 };
 
 
@@ -121,7 +101,7 @@ function createCard(titleCard, linkImg, template) {
 
   // Функция развертывания картинки popup-pic
   function openPopupPic() {
-    popupPic.classList.add('popup_opened');
+    openPopup(popupPic);
     popupPicTitle.textContent = template.querySelector('.card__title').textContent;
     popupPicExpand.src = template.querySelector('.card__img').src;
   };
@@ -162,13 +142,13 @@ initialCards.forEach(function(item) {
   createCard(item.name, item.link, cardItem);
 
   // Добавляем карточки на страницу
-  addCard(card, cardItem);
+  addCard(cardsContainer, cardItem);
 });
 
 
 
 // Функция для копирования значения в value popup
-function popupValue() {
+function copyPopupValue() {
   // Прописываем значения в value input
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
@@ -200,7 +180,7 @@ function createNewCard (evt) {
   createCard(nameImgInput.value, linkImgInput.value, cardItem);
 
   // Добавляем карточки на страницу
-  addCard(card, cardItem);
+  addCard(cardsContainer, cardItem);
 
   // Закрываем форму после создания карточки
   closePopup(popupImg);
@@ -211,27 +191,18 @@ function createNewCard (evt) {
 // Функция закрытия попапа по оверлею
 function closeOnOverlay(e) {
   if(e.target === e.currentTarget) {
-    closePopup(popupPic);
-    closePopup(popupEditProfile);
-    closePopup(popupImg);
+    closePopup(e.target);
   }
 };
 
 
 
-// Функция закрытия попапов по клавише ECS
-function closePopupOnEsc(e) {
-  console.log(e.key)
-  if(e.key === 'Escape') {
-    closePopup(popupPic);
-    closePopup(popupEditProfile);
-    closePopup(popupImg);
-  }
-}
-
-
 // Открытие popup-img
-profileBtn.addEventListener('click', () => openPopup(popupImg));
+newCardBtn.addEventListener('click', function() {
+  openPopup(popupImg);
+  nameImgInput.value = '';
+  linkImgInput.value = '';
+})
 
 // Закрытие popup-img
 popupSkipBtnImg.addEventListener('click', () => closePopup(popupImg));
@@ -240,7 +211,7 @@ popupSkipBtnImg.addEventListener('click', () => closePopup(popupImg));
 formElementPopup.addEventListener('submit', createNewUserName);
 
 // Открытие popup
-editBtn.addEventListener('click', popupValue);
+editBtn.addEventListener('click', copyPopupValue);
 
 // Закрытие popup
 popupSkipBtn.addEventListener('click', () => closePopup(popupEditProfile));
@@ -255,6 +226,3 @@ popupPicClose.addEventListener('click', () => closePopup(popupPic));
 popupEditProfile.addEventListener('click', closeOnOverlay);
 popupImg.addEventListener('click', closeOnOverlay);
 popupPic.addEventListener('click', closeOnOverlay);
-
-// Закрытие попапов по клавише ECS
-document.addEventListener('keydown', closePopupOnEsc)

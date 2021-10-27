@@ -3,4 +3,10 @@
   box-sizing: border-box;
   background: none;
   color: rgba(0, 0, 0, 0.2);
+  opacity: 1;
+}
+
+.popup__btn_disabled:hover {
+  cursor: not-allowed;
+  opacity: 1;
 }
