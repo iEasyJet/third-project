@@ -26,6 +26,10 @@ const formElementPopup = popupEditProfile.querySelector('.popup__form');
 // Находим поля формы в DOM
 const nameInput = formElementPopup.querySelector('.popup__input_type_name');
 const jobInput = formElementPopup.querySelector('.popup__input_type_job');
+// Массив инпутов формы профиля
+const profileInputs = [nameInput, jobInput];
+// Кнопка отправки формы
+const profileSubmit = formElementPopup.querySelector('.popup__btn');
 
 // Находим кнопку добавления картинок для popup-img
 const newCardBtn = profile.querySelector('.profile__btn');
@@ -42,6 +46,10 @@ const nameImgInput = formElementImg.querySelector(
 const linkImgInput = formElementImg.querySelector(
   '.popup__input_type_link-img'
 );
+// Массив инпутов формы создания карточки
+const imgInputs = [nameImgInput, linkImgInput];
+// Кнопка отправки формы для создания карточки
+const imgSubmit = formElementImg.querySelector('.popup__btn');
 
 // Находим popup-pic
 const popupPic = document.querySelector('.popup_type_pic');
@@ -61,31 +69,14 @@ function handleESC(evt) {
 
 // Добавляем новый класс для отображения/закрытия popup
 function openPopup(popup) {
-  enableValidation(validationConfig);
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', handleESC);
-}
-
-// Функция удаления классов с ошибкой у инпутов и спанов
-function deleteClassWithError(classOne, classTwo) {
-  const inputError = Array.from(document.querySelectorAll(`.${classOne}`));
-  const spanError = Array.from(document.querySelectorAll(`.${classTwo}`));
-  inputError.forEach((element) => {
-    element.classList.remove(classOne);
-  });
-  spanError.forEach((element) => {
-    element.classList.remove(classTwo);
-  });
 }
 
 // Удаляем новый класс  для скрытия popup
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
   document.removeEventListener('keydown', handleESC);
-  deleteClassWithError(
-    'popup__input_error_active',
-    'popup__input-error_active'
-  );
 }
 
 // Функция добавления готовой карточки на страницу
@@ -151,6 +142,10 @@ function openPopupEditProfile() {
   jobInput.value = profileJob.textContent;
 
   openPopup(popupEditProfile);
+  // Пришлось добавить данную функцию то же и для формы профиля
+  // Тк изначально, если ее нет, то кнопка заблокирована
+  // Хотя поля 'имя' и 'место работы' заполнены
+  toggleButtonState(profileInputs, profileSubmit);
 }
 
 // Обработчик «отправки» формы, хотя пока
@@ -196,6 +191,7 @@ function closeOnOverlay(e) {
 // Открытие popup-img
 newCardBtn.addEventListener('click', function () {
   openPopup(popupImg);
+  toggleButtonState(imgInputs, imgSubmit);
 });
 
 // Закрытие popup-img
