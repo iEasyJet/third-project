@@ -27,9 +27,9 @@ const formElementPopup = popupEditProfile.querySelector('.popup__form');
 const nameInput = formElementPopup.querySelector('.popup__input_type_name');
 const jobInput = formElementPopup.querySelector('.popup__input_type_job');
 // Массив инпутов формы профиля
-const profileInputs = [nameInput, jobInput];
+const popupProfileInputs = [nameInput, jobInput];
 // Кнопка отправки формы
-const profileSubmit = formElementPopup.querySelector('.popup__btn');
+const popupProfileSubmit = formElementPopup.querySelector('.popup__btn');
 
 // Находим кнопку добавления картинок для popup-img
 const newCardBtn = profile.querySelector('.profile__btn');
@@ -49,7 +49,7 @@ const linkImgInput = formElementImg.querySelector(
 // Массив инпутов формы создания карточки
 const imgInputs = [nameImgInput, linkImgInput];
 // Кнопка отправки формы для создания карточки
-const imgSubmit = formElementImg.querySelector('.popup__btn');
+const popupImgSubmit = formElementImg.querySelector('.popup__btn');
 
 // Находим popup-pic
 const popupPic = document.querySelector('.popup_type_pic');
@@ -145,7 +145,7 @@ function openPopupEditProfile() {
   // Пришлось добавить данную функцию то же и для формы профиля
   // Тк изначально, если ее нет, то кнопка заблокирована
   // Хотя поля 'имя' и 'место работы' заполнены
-  toggleButtonState(profileInputs, profileSubmit);
+  toggleButtonState(popupProfileInputs, popupProfileSubmit);
 }
 
 // Обработчик «отправки» формы, хотя пока
@@ -191,7 +191,7 @@ function closeOnOverlay(e) {
 // Открытие popup-img
 newCardBtn.addEventListener('click', function () {
   openPopup(popupImg);
-  toggleButtonState(imgInputs, imgSubmit);
+  toggleButtonState(imgInputs, popupImgSubmit);
 });
 
 // Закрытие popup-img
