@@ -12,10 +12,6 @@
   grid-column: 1 / 2;
   grid-row: 1 / 2;
   align-items: end;
-
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
 }
 
 @media (max-width: 680px) {

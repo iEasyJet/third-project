@@ -7,7 +7,7 @@ class Card {
     this._delete = settingsObject.delete;
     this._img = settingsObject.img;
     this._titleCard = settingsObject.title;
-    this._handleCardClick = settingsObject.function;
+    this._handleCardClick = settingsObject.handleCard;
   }
 
   // Метод клонирования template-заготовки
@@ -42,7 +42,6 @@ class Card {
       this._deleteCard();
     });
 
-    // Слушатель на открытие большой картинки
     this._elementImg.addEventListener('click', () => {
       this._handleCardClick(this._title, this._linkImg);
     });

@@ -4,9 +4,10 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./pages/index.css" />
     <link
       rel="shortcut icon"
-      href="<%=require('./images/icon/icon.png')%>"
+      href="./images/icon/icon.png"
       type="image/x-icon"
     />
     <title>Mesto</title>
@@ -17,7 +18,7 @@
       <header class="header">
         <a href="#" class="header__link">
           <img
-            src="<%=require('./images/header/logo.svg')%>"
+            src="./images/header/logo.svg"
             alt="Логотип"
             class="header__img"
           />
@@ -28,7 +29,7 @@
         <section class="profile">
           <div class="profile__box">
             <img
-              src="<%=require('./images/profile/avatar.png')%>"
+              src="./images/profile/avatar.png"
               alt="Аватар профиля"
               class="profile__img"
             />
@@ -99,7 +100,7 @@
               class="popup__input popup__input_type_name-img"
               id="popup__input-place"
               value=""
-              name="nameImg"
+              name="name-img"
               required
               minlength="2"
               maxlength="30"
@@ -112,7 +113,7 @@
               class="popup__input popup__input_type_link-img"
               id="popup__input-url"
               value=""
-              name="linkImg"
+              name="link-img"
               required
             />
             <span class="popup__input-error popup__input-url-error"></span>
@@ -142,5 +143,10 @@
         </div>
       </li>
     </template>
+
+    <script type="module" src="./scripts/index.js"></script>
+    <script type="module" src="./scripts/initial-сards.js"></script>
+    <script type="module" src="./scripts/Card.js"></script>
+    <script type="module" src="./scripts/FormValidator.js"></script>
   </body>
 </html>

@@ -1,3 +1,12 @@
+// Объект настроеек
+const validationConfig = {
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__btn',
+  inactiveButtonClass: 'popup__btn_disabled',
+  inputErrorClass: 'popup__input_error_active',
+  errorClass: 'popup__input-error_active',
+};
+
 class FormValidator {
   constructor(validationConfig, form) {
     this._validationConfig = validationConfig;
@@ -89,4 +98,4 @@ class FormValidator {
   }
 }
 
-export { FormValidator };
+export { validationConfig, FormValidator };
